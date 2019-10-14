@@ -3,7 +3,6 @@
 }
 
 @using ToDoList.Models;
-@model List<ToDoList.Models.Category>;
 
 <h1>Categories</h1>
 
@@ -14,9 +13,7 @@
 
 @foreach (Category category in Model)
 {
-  <li>@Html.ActionLink($"{category.Name}", "Details", new { id = category.CategoryId })</li>
+  <h3><a href='/categories/@category.Id'>@category.Name</a></h3>
 }
 
-<p>@Html.ActionLink("Add new category", "Create")</p>
-
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
+<p><a href='/'>Back home</a></p>
