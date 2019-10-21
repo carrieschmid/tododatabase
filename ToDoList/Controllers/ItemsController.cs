@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 
 namespace ToDoList.Controllers
 {
@@ -22,6 +23,7 @@ namespace ToDoList.Controllers
         
         }
 
+     
 
         public ActionResult Create()
         {
@@ -43,6 +45,7 @@ namespace ToDoList.Controllers
 
         public ActionResult Details(int id)
         {
+            
             var thisItem = _db.Items
             .Include(item => item.Categories)
             //Loads Categories to each Item, a collection of join entities
@@ -50,6 +53,8 @@ namespace ToDoList.Controllers
             //Loads the Category objects of each CategoryItem, which includes id of Category and Item
             .FirstOrDefault(item => item.ItemId == id);
             //Finds the item from the database you're working with
+            // var dateAndTime = thisItem.DateTime.Now;
+            // var date = dateAndTime.Date;
             return View(thisItem);
         }
         public ActionResult Edit(int id)
@@ -111,6 +116,15 @@ namespace ToDoList.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+        
+        [HttpGet, ActionName("ClosestDate")]
+           public ActionResult ClosestDate()
+        {
+            List<Item> model = _db.Items.OrderBy(item => item.Date).ToList();
+            Console.WriteLine(model);
+            return View("Index", model);
+        }
+   
     }
 }
 

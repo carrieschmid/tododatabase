@@ -14,9 +14,19 @@
 
     @Html.LabelFor(model => model.Description)
     @Html.EditorFor(model => model.Description)
+    <hr/>
+
+    @Html.LabelFor(model => model.Date)
+    @Html.EditorFor(model => model.Date)
+    <hr/>
+
+    @Html.LabelFor(model => model.IsCompleted)
+    @Html.EditorFor(model => model.IsCompleted)
+    <hr/>
 
     @Html.Label("Select category")
     @Html.DropDownList("CategoryId")
+    <hr/>
 
     <input type="submit" value="Save" />
 }

@@ -14,7 +14,8 @@
 
 @foreach (Item item in Model)
 {
-  <li>@Html.ActionLink($"{item.Description}", "Details", new { id = item.ItemId })</li>
-}
+  <li>@Html.ActionLink($"{item.Description}", "Details", new { id = item.ItemId }) | @item.Date</li>
 
+}
+@Html.ActionLink("Closest Date","ClosestDate")
 <p>@Html.ActionLink("Add new item", "Create")</p>
