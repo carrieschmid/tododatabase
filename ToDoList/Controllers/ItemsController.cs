@@ -34,6 +34,7 @@ namespace ToDoList.Controllers
         [HttpPost]
         public ActionResult Create(Item item, int CategoryId)
         {
+            // item.Date=DateTime.Now;--this would set every entry to current date
             _db.Items.Add(item);
             if (CategoryId != 0)
             {
@@ -55,7 +56,7 @@ namespace ToDoList.Controllers
             //Finds the item from the database you're working with
             // var dateAndTime = thisItem.Date.Now;
             // var date = dateAndTime.Date;
-            
+
             return View(thisItem);
         }
         public ActionResult Edit(int id)
