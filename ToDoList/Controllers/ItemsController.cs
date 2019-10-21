@@ -53,8 +53,9 @@ namespace ToDoList.Controllers
             //Loads the Category objects of each CategoryItem, which includes id of Category and Item
             .FirstOrDefault(item => item.ItemId == id);
             //Finds the item from the database you're working with
-            // var dateAndTime = thisItem.DateTime.Now;
+            // var dateAndTime = thisItem.Date.Now;
             // var date = dateAndTime.Date;
+            
             return View(thisItem);
         }
         public ActionResult Edit(int id)
