@@ -106,6 +106,7 @@ namespace ToDoList.Controllers
         public ActionResult DeleteCategory(int joinId)
         {
             var joinEntry = _db.CategoryItem.FirstOrDefault(entry => entry.CategoryItemId == joinId);
+            //We use the name joinId id becuase .NET automatically utilizes the value in the URL query in the Startup.cs if we name the variable id. For example, if we named the parameter id instead of joinId and the details URL was something like /Items/Details/6, then the value of id would be 6, which is the ItemId and not the CategoryItemId that we wanted from our Hidden() method
             _db.CategoryItem.Remove(joinEntry);
             _db.SaveChanges();
             return RedirectToAction("Index");
