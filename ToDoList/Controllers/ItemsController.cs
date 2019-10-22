@@ -23,10 +23,12 @@ namespace ToDoList.Controllers {
             _db = db;
         }
 
-        public async Task<ActionResult> Index () 
-        {
+        public async Task<ActionResult> Index () {
             var userId = this.User.FindFirst (ClaimTypes.NameIdentifier)?.Value;
+            //this refers to ItemsController
+            //? is an existential operator, if the code to left returns null, don't call the method to the right .Vaue(), if NameIdentifier is located, retrieve Value
             var currentUser = await _userManager.FindByIdAsync (userId);
+            //we wait for Identity to locate correct user before moving on
             var userItems = _db.Items.Where (entry => entry.User.Id == currentUser.Id);
             return View (userItems);
         }
@@ -37,8 +39,10 @@ namespace ToDoList.Controllers {
         }
 
         [HttpPost]
-        public ActionResult Create (Item item, int CategoryId) {
-            // item.Date=DateTime.Now;--this would set every entry to current date
+        public async Task<ActionResult> Create (Item item, int CategoryId) {
+            var userId = this.User.FindFirst (ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync (userId);
+            item.User = currentUser;
             _db.Items.Add (item);
             if (CategoryId != 0) {
                 _db.CategoryItem.Add (new CategoryItem () { CategoryId = CategoryId, ItemId = item.ItemId });
