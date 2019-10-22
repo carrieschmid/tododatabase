@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace BasicAuthentication.Models
 {
     public class ToDoListContext : IdentityDbContext<ApplicationUser>
