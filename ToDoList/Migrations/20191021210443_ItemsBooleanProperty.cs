@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
+using BasicAuthentication.Models;
 
 namespace ToDoList.Migrations
 {
