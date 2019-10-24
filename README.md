@@ -1,10 +1,6 @@
 # tododatabase
 10/14/19
 
-# car-dealership
-9/24/19
-
-
 #### _Task list with user authentication_
 
 #### By _**Carrie Schmid**_
@@ -35,4 +31,4 @@ C#
 
 *MIT Liscence*
 
-Copyright (c) 2016 **_Carrie Schmid_**
+Copyright (c) 2019 **_Carrie Schmid_**
